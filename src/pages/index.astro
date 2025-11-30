@@ -52,7 +52,7 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
 
 <Layout title="Home">
   <main class="min-h-screen">
-    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+    <section class="bg-[#333] text-white py-20">
       <div class="container">
         <div class="flex items-center justify-between mb-6 md:mb-0">
           <h1 class="text-5xl font-bold">Pablo Butelman</h1>
@@ -95,7 +95,6 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
             <EventCard event={event} />
           ))}
         </div>
-        <a href="/events" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">View all events</a>
       </div>
     </section>
     
@@ -108,25 +107,25 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
           <div class="flex flex-wrap gap-3">
             <button 
               data-tag="composición" 
-              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+              class="tag-filter px-4 py-2 rounded font-medium transition-colors bg-[#333] text-white hover:bg-black"
             >
               Composición
             </button>
             <button 
               data-tag="intérprete" 
-              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+              class="tag-filter px-4 py-2 rounded font-medium transition-colors bg-[#333] text-white hover:bg-black"
             >
               Intérprete
             </button>
             <button 
               data-tag="producción" 
-              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+              class="tag-filter px-4 py-2 rounded font-medium transition-colors bg-[#333] text-white hover:bg-black"
             >
               Producción
             </button>
             <button 
               data-tag="arreglos" 
-              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+              class="tag-filter px-4 py-2 rounded font-medium transition-colors bg-[#333] text-white hover:bg-black"
             >
               Arreglos
             </button>
@@ -255,13 +254,13 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
       if (activeTags.has(tag)) {
         // Deactivate tag
         activeTags.delete(tag);
-        button.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+        button.classList.remove('bg-[#333]', 'text-white', 'hover:bg-black');
         button.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
       } else {
         // Activate tag
         activeTags.add(tag);
         button.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
-        button.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+        button.classList.add('bg-[#333]', 'text-white', 'hover:bg-black');
       }
       
       filterProjects();

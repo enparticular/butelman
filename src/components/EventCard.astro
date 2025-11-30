@@ -9,8 +9,8 @@ const formattedDate = event.data.date.toLocaleDateString('en-US', {
 });
 ---
 
-<article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col md:flex-row">
-  <div class="w-full md:w-64 h-48 md:h-auto flex-shrink-0">
+<article class="bg-white border border-[#bbb] overflow-hidden flex flex-col md:flex-row">
+  <div class="w-full md:w-1/3 h-48 md:h-auto flex-shrink-0">
     <img src={event.data.image.src} alt={event.data.image.alt} class="w-full h-full object-cover" />
   </div>
   <div class="p-6 flex-grow flex flex-col">
@@ -18,11 +18,11 @@ const formattedDate = event.data.date.toLocaleDateString('en-US', {
     <h3 class="text-2xl font-bold text-gray-800 mb-3">{event.data.title}</h3>
     <p class="text-gray-600 mb-4 flex-grow">{event.data.description}</p>
     <div class="flex gap-4">
-      <a href={`/events/${event.slug}`} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded transition-colors">
-        Read more
+      <a href={`/events/${event.slug}`} class="bg-[#555] hover:bg-[#666] text-white font-semibold px-4 py-2 transition-colors">
+        Leer más
       </a>
       {event.data.link && (
-        <a href={event.data.link} class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-4 py-2 rounded transition-colors" target="_blank" rel="noopener noreferrer">
+        <a href={event.data.link} class="bg-[#555] hover:bg-[#666] text-white font-semibold px-4 py-2 transition-colors" target="_blank" rel="noopener noreferrer">
           External Link
         </a>
       )}
