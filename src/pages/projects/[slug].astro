@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+// Define the link structure to match your schema
+interface ProjectLink {
+  title: string;
+  url: string;
+}
+
+// Generate paths for all projects
+export const getStaticPaths = (async () => {
+  const projects: CollectionEntry<'projects'>[] = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={project.data.title}>
+  <main class="project-page">
+    <article>
+      <h1>{project.data.title}</h1>
+      
+      <div class="project-image">
+        <img src={project.data.image.src} alt={project.data.image.alt} />
+      </div>
+      
+      <div class="project-content">
+        <p class="description">{project.data.description}</p>
+        
+        {project.data.links && project.data.links.length > 0 && (
+          <div class="project-links">
+            <h2>Project Links</h2>
+            <ul>
+              {project.data.links.map((link: ProjectLink) => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </article>
+    
+    <div class="back-link">
+      <a href="/projects">&larr; Back to Projects</a>
+    </div>
+  </main>
+</Layout>

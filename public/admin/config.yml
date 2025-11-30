@@ -1,0 +1,143 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update
+
+# These lines should match your media configuration in Astro
+media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media
+
+collections:
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - label: "Image"
+        name: "image"
+        widget: "object"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - {
+              label: "Alt Text",
+              name: "alt",
+              widget: "string",
+              required: false,
+              default: "Event image",
+            }
+      - { label: "Link", name: "link", widget: "string", required: false }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["music", "cinema/theater"],
+          default: "music",
+        }
+      - label: "Image"
+        name: "image"
+        widget: "object"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - {
+              label: "Alt Text",
+              name: "alt",
+              widget: "string",
+              required: false,
+              default: "Project image",
+            }
+      - label: "Links"
+        name: "links"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { label: "Order", name: "order", widget: "number", required: false }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "src/content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Content", name: "body", widget: "markdown" }
+      - label: "Image"
+        name: "image"
+        required: false
+        widget: "object"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - {
+              label: "Alt Text",
+              name: "alt",
+              widget: "string",
+              required: false,
+              default: "Page image",
+            }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { label: "Order", name: "order", widget: "number", required: false }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Navigation"
+        name: "nav"
+        file: "src/data/navigation.json"
+        fields:
+          - label: "Nav Items"
+            name: "navItems"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+      - label: "Footer"
+        name: "footer"
+        file: "src/data/footer.json"
+        fields:
+          - label: "Social Links"
+            name: "socialLinks"
+            widget: "list"
+            fields:
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - {
+                  label: "Icon",
+                  name: "icon",
+                  widget: "string",
+                  hint: "Icon name from your icon library",
+                }

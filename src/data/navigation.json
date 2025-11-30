@@ -1,0 +1,20 @@
+{
+	"navItems": [
+		{
+			"label": "Home",
+			"url": "/"
+		},
+		{
+			"label": "Events",
+			"url": "/events"
+		},
+		{
+			"label": "Projects",
+			"url": "/projects"
+		},
+		{
+			"label": "About",
+			"url": "/about"
+		}
+	]
+}

@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+// Generate paths for all events
+export const getStaticPaths = (async () => {
+  const events: CollectionEntry<'events'>[] = await getCollection('events');
+  return events.map(event => ({
+    params: { slug: event.slug },
+    props: { event }
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  event: CollectionEntry<'events'>;
+}
+
+const { event } = Astro.props;
+
+// Format the date
+const formattedDate = event.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title={event.data.title}>
+  <main class="event-page">
+    <article>
+      <div class="event-header">
+        <h1>{event.data.title}</h1>
+        <time datetime={event.data.date.toISOString()}>{formattedDate}</time>
+      </div>
+      
+      <div class="event-image">
+        <img src={event.data.image.src} alt={event.data.image.alt} />
+      </div>
+      
+      <div class="event-content">
+        <p class="description">{event.data.description}</p>
+        
+        {event.data.link && (
+          <div class="event-link">
+            <a href={event.data.link} target="_blank" rel="noopener noreferrer" class="button">
+              Visit Event Website
+            </a>
+          </div>
+        )}
+      </div>
+    </article>
+    
+    <div class="back-link">
+      <a href="/events">&larr; Back to Events</a>
+    </div>
+  </main>
+</Layout>

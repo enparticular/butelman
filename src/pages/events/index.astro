@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import EventCard from '../../components/EventCard.astro';
+
+// Get all events sorted by date (newest first)
+const events: CollectionEntry<'events'>[] = await getCollection('events');
+const sortedEvents = events.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout title="Events">
+  <main class="min-h-screen py-16">
+    <div class="container">
+      <h1 class="text-4xl font-bold text-gray-800 mb-8">Events</h1>
+      
+      <div class="space-y-6">
+        {sortedEvents.map(event => (
+          <EventCard event={event} />
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>
