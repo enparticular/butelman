@@ -12,6 +12,9 @@ links:
     url: "https://soundcloud.com"
 featured: false
 order: 5
+tags:
+  - "producción"
+  - "composición"
 ---
 
 Nine tracks of pure 80s-inspired synth magic, perfect for late-night drives through the city.

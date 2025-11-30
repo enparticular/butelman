@@ -12,6 +12,9 @@ links:
     url: "https://soundcloud.com"
 featured: false
 order: 11
+tags:
+  - "composición"
+  - "arreglos"
 ---
 
 Five epic tracks spanning over an hour, taking listeners on an interstellar voyage through sound.

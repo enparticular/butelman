@@ -12,6 +12,10 @@ links:
     url: "https://youtube.com"
 featured: false
 order: 9
+tags:
+  - "producción"
+  - "composición"
+  - "intérprete"
 ---
 
 A concept album telling the tale of mechanical warriors in a post-apocalyptic world. Pure metal glory.

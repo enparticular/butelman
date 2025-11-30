@@ -12,6 +12,9 @@ links:
     url: "https://music.apple.com"
 featured: false
 order: 10
+tags:
+  - "arreglos"
+  - "producción"
 ---
 
 Smooth grooves, jazzy undertones, and sultry vocals create the perfect late-night atmosphere.

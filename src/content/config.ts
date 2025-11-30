@@ -37,6 +37,10 @@ const projectsCollection = defineCollection({
 			)
 			.optional()
 			.default([]),
+		tags: z
+			.array(z.enum(["composición", "intérprete", "producción", "arreglos"]))
+			.optional()
+			.default([]),
 		featured: z.boolean().optional().default(false),
 		order: z.number().optional(),
 	}),

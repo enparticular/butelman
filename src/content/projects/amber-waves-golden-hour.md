@@ -12,6 +12,8 @@ links:
     url: "https://bandcamp.com"
 featured: false
 order: 8
+tags:
+  - "intérprete"
 ---
 
 Twelve songs celebrating love, friendship, and the simple pleasures of life under blue skies.

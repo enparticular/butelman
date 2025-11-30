@@ -1,10 +1,25 @@
 @import "tailwindcss";
 
 /* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Work Sans', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Container wrapper */

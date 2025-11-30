@@ -54,11 +54,40 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
   <main class="min-h-screen">
     <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
       <div class="container">
-        <h1 class="text-5xl font-bold mb-4">Pablo Butelman</h1>
+        <div class="flex items-center justify-between mb-6 md:mb-0">
+          <h1 class="text-5xl font-bold">Pablo Butelman</h1>
+          
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="md:hidden text-white p-2" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:block mt-6">
+          <ul class="flex gap-6 text-lg">
+            <li><a href="#workshops" class="hover:underline transition-all">Workshops</a></li>
+            <li><a href="#discos" class="hover:underline transition-all">Discos</a></li>
+            <li><a href="#cine" class="hover:underline transition-all">Cine</a></li>
+            <li><a href="#biografia" class="hover:underline transition-all">Biografía</a></li>
+          </ul>
+        </nav>
       </div>
     </section>
     
-    <section class="py-16">
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+      <ul class="flex flex-col">
+        <li><a href="#workshops" class="block px-6 py-4 hover:bg-gray-100 transition-colors mobile-nav-link">Workshops</a></li>
+        <li><a href="#discos" class="block px-6 py-4 hover:bg-gray-100 transition-colors mobile-nav-link">Discos</a></li>
+        <li><a href="#cine" class="block px-6 py-4 hover:bg-gray-100 transition-colors mobile-nav-link">Cine</a></li>
+        <li><a href="#biografia" class="block px-6 py-4 hover:bg-gray-100 transition-colors mobile-nav-link">Biografía</a></li>
+      </ul>
+    </nav>
+    
+    <section id="workshops" class="py-16 scroll-mt-20">
       <div class="container">
         <h2 class="text-3xl font-bold mb-8 text-gray-800">Workshops / Recitales</h2>
         <div class="space-y-6 mb-8">
@@ -70,18 +99,54 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
       </div>
     </section>
     
-    <section class="py-16 bg-white">
+    <section id="discos" class="py-16 bg-white scroll-mt-20">
       <div class="container">
         <h2 class="text-3xl font-bold mb-8 text-gray-800">Discos</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        
+        <!-- Tag Filters -->
+        <div class="mb-8">
+          <div class="flex flex-wrap gap-3">
+            <button 
+              data-tag="composición" 
+              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Composición
+            </button>
+            <button 
+              data-tag="intérprete" 
+              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Intérprete
+            </button>
+            <button 
+              data-tag="producción" 
+              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Producción
+            </button>
+            <button 
+              data-tag="arreglos" 
+              class="tag-filter px-4 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Arreglos
+            </button>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="music-projects-grid">
           {musicProjects.map(project => (
-            <ProjectCard project={project} />
+            <div 
+              class="music-project-item" 
+              data-tags={JSON.stringify(project.data.tags || [])}
+            >
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
       </div>
     </section>
     
-    <section class="py-16 bg-gray-50">
+    <section id="cine" class="py-16 bg-gray-50 scroll-mt-20">
       <div class="container">
         <h2 class="text-3xl font-bold mb-8 text-gray-800">Cine / Teatro</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -93,7 +158,7 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
     </section>
     
     {biografiaPage && biografiaRendered && (
-      <section class="py-16 bg-white">
+      <section id="biografia" class="py-16 bg-white scroll-mt-20">
         <div class="container">
           <h2 class="text-3xl font-bold mb-8 text-gray-800">{biografiaPage.data.title}</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -116,10 +181,90 @@ const biografiaRendered = biografiaPage ? await biografiaPage.render() : null;
       </section>
     )}
     
-    <section class="py-8 bg-gray-50">
-      <div class="container text-center">
-        <a href="/projects" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">View all projects</a>
-      </div>
-    </section>
   </main>
 </Layout>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking a link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e: Event) => {
+      e.preventDefault();
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+  
+  // Tag filtering system
+  const tagFilters = document.querySelectorAll<HTMLButtonElement>('.tag-filter');
+  const activeTags = new Set<string>(['composición', 'intérprete', 'producción', 'arreglos']);
+  
+  function filterProjects() {
+    const projectItems = document.querySelectorAll<HTMLElement>('.music-project-item');
+    
+    projectItems.forEach(item => {
+      const projectTagsAttr = item.getAttribute('data-tags');
+      if (!projectTagsAttr) {
+        item.style.display = 'none';
+        return;
+      }
+      
+      const projectTags: string[] = JSON.parse(projectTagsAttr);
+      
+      // Show project if it has at least one active tag
+      const hasActiveTag = projectTags.some(tag => activeTags.has(tag));
+      
+      if (hasActiveTag) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+  
+  tagFilters.forEach(button => {
+    button.addEventListener('click', () => {
+      const tag = button.getAttribute('data-tag');
+      if (!tag) return;
+      
+      if (activeTags.has(tag)) {
+        // Deactivate tag
+        activeTags.delete(tag);
+        button.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+        button.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+      } else {
+        // Activate tag
+        activeTags.add(tag);
+        button.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+        button.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+      }
+      
+      filterProjects();
+    });
+  });
+</script>

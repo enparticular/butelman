@@ -12,6 +12,9 @@ links:
     url: "https://music.apple.com"
 featured: false
 order: 12
+tags:
+  - "intérprete"
+  - "producción"
 ---
 
 Fragile and beautiful, this album explores themes of vulnerability, courage, and transformation.

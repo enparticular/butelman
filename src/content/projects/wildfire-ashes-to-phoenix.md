@@ -12,6 +12,11 @@ links:
     url: "https://spotify.com"
 featured: false
 order: 15
+tags:
+  - "composición"
+  - "producción"
+  - "intérprete"
+  - "arreglos"
 ---
 
 Fifteen tracks of uncompromising punk fury with lyrics that matter. No apologies, no compromises.

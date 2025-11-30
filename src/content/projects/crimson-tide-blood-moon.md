@@ -12,6 +12,10 @@ links:
     url: "https://youtube.com"
 featured: true
 order: 3
+tags:
+  - "composición"
+  - "producción"
+  - "intérprete"
 ---
 
 Featuring crushing riffs and soaring vocals, this album showcases the band at their heaviest and most melodic.

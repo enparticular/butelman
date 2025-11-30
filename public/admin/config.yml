@@ -1,3 +1,4 @@
+local_backend: true
 backend:
   name: git-gateway
   branch: main # Branch to update
@@ -71,6 +72,16 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "URL", name: "url", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - { label: "Composición", value: "composición" }
+          - { label: "Intérprete", value: "intérprete" }
+          - { label: "Producción", value: "producción" }
+          - { label: "Arreglos", value: "arreglos" }
       - {
           label: "Featured",
           name: "featured",

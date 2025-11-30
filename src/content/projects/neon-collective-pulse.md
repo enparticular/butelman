@@ -12,6 +12,9 @@ links:
     url: "https://bandcamp.com"
 featured: true
 order: 2
+tags:
+  - "producción"
+  - "arreglos"
 ---
 
 A bold exploration of electronic music's boundaries, blending techno, house, and ambient elements.

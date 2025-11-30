@@ -12,6 +12,10 @@ links:
     url: "https://youtube.com"
 featured: true
 order: 7
+tags:
+  - "composición"
+  - "producción"
+  - "arreglos"
 ---
 
 Remastered 25th anniversary edition of the groundbreaking debut that defined a generation.

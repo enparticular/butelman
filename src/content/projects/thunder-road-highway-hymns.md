@@ -12,6 +12,10 @@ links:
     url: "https://youtube.com"
 featured: false
 order: 13
+tags:
+  - "composición"
+  - "intérprete"
+  - "arreglos"
 ---
 
 Road-tested rock and roll from musicians who still believe in the power of a great guitar solo.

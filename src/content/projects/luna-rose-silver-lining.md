@@ -12,6 +12,9 @@ links:
     url: "https://music.apple.com"
 featured: false
 order: 4
+tags:
+  - "intérprete"
+  - "arreglos"
 ---
 
 An intimate collection of songs about hope, loss, and finding beauty in everyday moments.

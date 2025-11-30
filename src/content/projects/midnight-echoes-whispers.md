@@ -12,6 +12,9 @@ links:
     url: "https://music.apple.com"
 featured: true
 order: 1
+tags:
+  - "composición"
+  - "intérprete"
 ---
 
 Their most introspective album yet, featuring 12 tracks of ethereal soundscapes and poetic lyrics.

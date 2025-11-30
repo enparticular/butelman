@@ -12,6 +12,9 @@ links:
     url: "https://music.apple.com"
 featured: false
 order: 6
+tags:
+  - "arreglos"
+  - "intérprete"
 ---
 
 Layered guitars, hypnotic rhythms, and ethereal vocals create an immersive listening experience.
